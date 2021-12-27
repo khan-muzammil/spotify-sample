@@ -8,6 +8,13 @@ function App() {
 		const accessToken = params.get("access_token")
 		const refreshToken = params.get("refresh_token")
 		console.log(accessToken, refreshToken)
+
+		if (refreshToken) {
+			fetch(`/refresh_token?refresh_token=${refreshToken}`)
+				.then((res) => res.json())
+				.then((data) => console.log(data))
+				.catch((err) => console.log(err))
+		}
 	}, [])
 	return (
 		<div className="App">
